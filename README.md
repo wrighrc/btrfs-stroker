@@ -35,3 +35,8 @@ $ cat set-max.sh
 sudo btrfs filesystem resize 12:max /
 sudo btrfs filesystem resize 13:max /
 ```
+
+## Note about short stroking
+Since hardrives perform better on the first bits of the drive, btrfs-stroker balances off the slowest parts of the drive, so the idea is that if you delete stuff it will ensure the fast drives are used and the fastest parts of the slow drive are used.
+
+See https://www.tomshardware.com/reviews/short-stroking-hdd,2157-2.html for info on short stroking.
