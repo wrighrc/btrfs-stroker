@@ -16,9 +16,22 @@ free space available to not have our volume fill up before we can stroke it.
 
 Ofcourse one could stroke their btrfs more than once a day if needed.
 
-Lets define Tiers of Drives we want to use up first, with Tier 0 being the one we want to use first.
+The script lets you define Tiers of Drives you want to use up first, with Tier 0 being the ones you want to use first.
 
 Tier 0 - 2x 2 TB NVME Drives running at PCIe 4x
+
 Tier 1 - 2x 500 GB NVME Drives running at PCIe 1x
+
 Tier 2 - 2x 6 TB 7200 RPM Enterprise Drives
+
 Tier 3 - 2x 500 GB 5400 RPM Hybrid Laptop Drives
+
+## Temporary flip to ingest files on the slow devices.
+
+One could just manually set max on the slow drives supposing they wanted new bulk data incoming to land on the slow drives, like this
+```
+$ cat set-max.sh
+#!/bin/bash -x
+sudo btrfs filesystem resize 12:max /
+sudo btrfs filesystem resize 13:max /
+```
